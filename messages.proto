@@ -30,8 +30,8 @@ message ClientMessage {
 }
 
 message ModInfoEntry {
-    string label;
-    string data;
+    string label = 1;
+    string data = 2;
 }
 
 message ModInfo {
