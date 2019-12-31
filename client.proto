@@ -1,0 +1,66 @@
+syntax = "proto3";
+package messageBuffs;
+
+message Field {
+    enum DataType {
+        BOOL = 0;
+        FLOAT = 1;
+        INT = 2;
+        STRING = 3;
+    }
+
+    string name = 1;
+    string value = 2;
+    DataType type = 3;
+}
+
+message Tag {
+    string name = 1;
+    string value = 2;
+}
+
+message ModuleMessage {
+    int32 version = 1;
+    int64 timestamp = 2;
+    string measurement = 3;
+    repeated Field fields = 4;
+    repeated Tag tags = 5;
+}
+
+message ClientMessage {
+    int32 version = 1;
+    int64 timestamp = 2;
+    int64 tsReceivedAtClient = 3;
+    string measurement = 4;
+    repeated Field fields = 5;
+    repeated Tag tags = 6;
+}
+
+message CommandInfo {
+    string cmdName = 1;
+    string cmdHelp = 2;
+    int32 numArgs = 3;
+}
+
+message CommandMessage {
+    enum CommandType {
+        REGISTER = 0;
+        UNREGISTER = 1;
+        RUN = 2;
+        OUTPUT = 3;
+    }
+
+    CommandType type = 1;
+    repeated CommandInfo info = 2;
+    string commandArgs = 3;
+    string output = 4;
+}
+
+message ServerMessage {
+    string content = 1;
+}
+
+message ServerReply {
+    string version = 1;
+    repeated ServerMessage messages = 2;
+}
