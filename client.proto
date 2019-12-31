@@ -32,8 +32,9 @@ message ClientMessage {
     int64 timestamp = 2;
     int64 tsReceivedAtClient = 3;
     string measurement = 4;
-    repeated Field fields = 5;
-    repeated Tag tags = 6;
+    string info = 5;
+    repeated Field fields = 6;
+    repeated Tag tags = 7;
 }
 
 message CommandInfo {
