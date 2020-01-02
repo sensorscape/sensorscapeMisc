@@ -1,23 +1,28 @@
 syntax = "proto3";
 package messageBuffs;
 
-message ClientMessage {
+message ClientMeasurement {
     int32 version = 1;
     int64 timestamp = 2;
     int64 tsReceivedAtClient = 3;
     string measurement = 4;
-    string info = 5;
-    repeated Field fields = 6;
-    repeated Tag tags = 7;
+    repeated Field fields = 5;
+    repeated Tag tags = 6;
 }
 
-message CommandInfo {
+message ClientRequest {
+    int32 version = 1;
+    int32 reqType = 2;
+    string module = 3;
+}
+
+message ModCommandInfo {
     string cmdName = 1;
     string cmdHelp = 2;
     int32 numArgs = 3;
 }
 
-message CommandMessage {
+message ModCommandMessage {
     enum CommandType {
         REGISTER = 0;
         UNREGISTER = 1;
@@ -25,10 +30,11 @@ message CommandMessage {
         OUTPUT = 3;
     }
 
-    CommandType type = 1;
-    repeated CommandInfo info = 2;
-    string commandArgs = 3;
-    string output = 4;
+    int32 version = 1;
+    CommandType type = 2;
+    repeated ModCommandInfo cmdInfo = 3;
+    string commandArgs = 4;
+    string output = 5;
 }
 
 message Field {
@@ -44,6 +50,11 @@ message Field {
     DataType type = 3;
 }
 
+message ModInfo {
+    string label = 1;
+    string data = 2;
+}
+
 message ModuleMessage {
     int32 version = 1;
     int64 timestamp = 2;
@@ -56,14 +67,9 @@ message ServerMessage {
     string content = 1;
 }
 
-message ServerModInfo {
-    string label = 1;
-    string data = 2;
-}
-
 message ServerReply {
     string version = 1;
-    repeated serverModInfo = 2;
+    repeated ModInfo modinfo = 2;
     repeated ServerMessage messages = 3;
 }
 
