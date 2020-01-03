@@ -28,6 +28,7 @@ message ModCommandMessage {
         UNREGISTER = 1;
         RUN = 2;
         OUTPUT = 3;
+        MODINFO = 4;
     }
 
     int32 version = 1;
@@ -61,6 +62,16 @@ message ModuleMessage {
     string measurement = 3;
     repeated Field fields = 4;
     repeated Tag tags = 5;
+}
+
+message ModuleRequest {
+     enum RequestType {
+        MODINFO = 0;
+    }
+
+    int32 version = 1;
+    RequestType type = 2;
+    string module = 3;
 }
 
 message ServerMessage {
