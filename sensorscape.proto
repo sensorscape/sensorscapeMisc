@@ -22,22 +22,6 @@ message CommandInfo {
     int32 numArgs = 3;
 }
 
-message ModuleCommand {
-    enum CommandType {
-        REGISTER = 0;
-        UNREGISTER = 1;
-        RUN = 2;
-        OUTPUT = 3;
-        MODINFO = 4;
-    }
-
-    int32 version = 1;
-    CommandType type = 2;
-    repeated CommandInfo cmdInfo = 3;
-    string commandArgs = 4;
-    string output = 5;
-}
-
 message Field {
     enum DataType {
         BOOL = 0;
@@ -54,6 +38,22 @@ message Field {
 message ModInfo {
     string label = 1;
     string data = 2;
+}
+
+message ModuleCommand {
+    enum CommandType {
+        REGISTER = 0;
+        UNREGISTER = 1;
+        RUN = 2;
+        OUTPUT = 3;
+        MODINFO = 4;
+    }
+
+    int32 version = 1;
+    CommandType type = 2;
+    repeated CommandInfo cmdInfo = 3;
+    string commandArgs = 4;
+    string output = 5;
 }
 
 message ModuleMessage {
