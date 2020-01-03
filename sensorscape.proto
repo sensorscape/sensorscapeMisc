@@ -16,13 +16,13 @@ message ClientRequest {
     string module = 3;
 }
 
-message ModCommandInfo {
+message CommandInfo {
     string cmdName = 1;
     string cmdHelp = 2;
     int32 numArgs = 3;
 }
 
-message ModCommandMessage {
+message ModuleCommand {
     enum CommandType {
         REGISTER = 0;
         UNREGISTER = 1;
@@ -33,7 +33,7 @@ message ModCommandMessage {
 
     int32 version = 1;
     CommandType type = 2;
-    repeated ModCommandInfo cmdInfo = 3;
+    repeated CommandInfo cmdInfo = 3;
     string commandArgs = 4;
     string output = 5;
 }
