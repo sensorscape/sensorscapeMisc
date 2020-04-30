@@ -1,5 +1,7 @@
 syntax = "proto3";
+
 package messageBuffs;
+
 option go_package = ".;messageBuffs";
 
 message ClientMeasurement {
