@@ -1,6 +1,6 @@
-option go_package = ".;messageBuffs";
 syntax = "proto3";
 package messageBuffs;
+option go_package = ".;messageBuffs";
 
 message ClientMeasurement {
     int32 version = 1;
