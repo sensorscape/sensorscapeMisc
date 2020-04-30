@@ -1,3 +1,4 @@
+option go_package = ".;messageBuffs";
 syntax = "proto3";
 package messageBuffs;
 
